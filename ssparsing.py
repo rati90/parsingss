@@ -8,13 +8,20 @@ from parss_links import inside_do_parse
 from csvsave import csv_save
 
 
-n = 0
+
 get_links.all_pages()
 final_links = sum(all_links, [])
 
-while len(final_links) > n:
-    inside_link = "https://ss.ge" + final_links[n]
-    title, price, area, floor = inside_do_parse(get_request(inside_link))
-    csv_save(title, price, area, floor)
-    
-    n += 1
+def main():
+    n = 0
+    while len(final_links) > n:
+        inside_link = "https://ss.ge" + final_links[n]
+        title, price, area, floor = inside_do_parse(get_request(inside_link))
+        csv_save(title, price, area, floor)
+        
+        n += 1
+
+
+
+if __name__ == "__main__":
+    main()
